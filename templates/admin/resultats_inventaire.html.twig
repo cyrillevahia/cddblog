@@ -1,0 +1,131 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block page_content %}
+
+	<h2>
+		<strong>Résultat de l'inventaire<strong></h2>
+
+
+			{{ form_start(form) }}
+			{{ form_errors(form) }}
+
+			{{ form_label(form.debut, 'Debut Inventaire') }}
+			{{ form_errors(form.debut) }}
+			{{ form_widget(form.debut,  {'attr': {'class': 'datepicker'}}) }}
+			{{ form_label(form.fin , 'Fin inventaire')}}
+			{{ form_errors(form.fin) }}
+			{{ form_widget(form.fin) }}
+
+			<input type="submit" value="Afficher la liste"/>
+			{{ form_end(form) }}
+
+			<hr/>
+			<h4>
+				<strong>Liste des matériels non inventoriés
+				</strong>
+			</h4>
+			<div>
+
+
+				<table class="table" border="1px" style="table-layout:fixed;">
+
+					<thead>
+						<th style="width:25%;">Code</th>
+						<th style="width:25%;">Categorie</th>
+						<th style="width:25%;">Marque</th>
+						<th style="width:25%;">Nom</th>
+						<th style="width:25%;">Source</th>
+					</thead>
+
+
+					<tbody>
+
+						{% for exemplaire in exemplaires %}
+							<span class="text-weight-normal">
+
+								<tr>
+									<td>{{exemplaire.getCodebar()}}</td>
+									<td>{{exemplaire.getArticle().getCategorie()}}</td>
+									<td>{{exemplaire.getArticle().getMarque()}}</td>
+									<td>{{exemplaire.getArticle()}}</td>
+									<td>{{exemplaire.getOrigine()}}</td>
+								</tr>
+
+							</span>
+						{% endfor %}
+
+					</tbody>
+
+				</table>
+			</div>
+			<hr/>
+			<div>
+				<h4>
+					<strong>Nombre de matériels en magasin
+					</strong>
+				</h4>
+
+				<table class="table" border="1px" style="table-layout:fixed;">
+
+					<thead>
+						<th style="width:25%;">Categorie</th>
+						<th style="width:25%;">Marque</th>
+						<th style="width:25%;">Modèle</th>
+						<th style="width:25%;">Nombre</th>
+
+					</thead>
+
+
+					<tbody>
+						{% for materiel in materiels %}
+
+							<span class="text-weight-normal">
+								<tr>
+									<td>{{materiel.Categorie}}</td>
+									<td>{{materiel.marque}}</td>
+									<td>{{materiel.nomModele}}</td>
+									<td>{{materiel.Nombre}}</td>
+
+								</tr>
+							</span>
+
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<hr/>
+			<div>
+				<h4>
+					<strong>Nombre de matériels sortis du magasin
+					</strong>
+				</h4>
+
+				<table class="table" border="1px" style="table-layout:fixed;">
+
+					<thead>
+						<th style="width:25%;">Categorie</th>
+						<th style="width:25%;">Marque</th>
+						<th style="width:25%;">Modèle</th>
+						<th style="width:25%;">Nombre</th>
+
+					</thead>
+
+
+					<tbody>
+						{% for materiel in materielsSortis %}
+
+							<span class="text-weight-normal">
+								<tr>
+									<td>{{materiel.Categorie}}</td>
+									<td>{{materiel.marque}}</td>
+									<td>{{materiel.nomModele}}</td>
+									<td>{{materiel.Nombre}}</td>
+
+								</tr>
+							</span>
+
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endblock %}

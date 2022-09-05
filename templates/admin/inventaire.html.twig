@@ -1,0 +1,13 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{# this tag only applies to the forms defined in this template #}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block page_content %}
+	<div>
+		<h2>
+			<strong>Inventaire<strong></h2>
+
+				{{form(form)}}
+				</div>
+
+			{% endblock %}

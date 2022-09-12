@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import slide1 from "../../img/slide/slide-1.jpg";
+import slide1 from "../../img/slide/slide-0.jpg";
 import slide2 from "../../img/slide/slide-2.jpg";
 import slide3 from "../../img/slide/slide-3.jpg";
 import Main from './Main';
